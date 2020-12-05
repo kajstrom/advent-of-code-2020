@@ -1,6 +1,9 @@
-file = open("inputs/day02.txt", "r")
-lines = file.read().splitlines()
-file.close()
+def read_input():
+    file = open("inputs/day02.txt", "r")
+    lines = file.read().splitlines()
+    file.close()
+
+    return lines
 
 def parse_password_and_policy(line):
     policy_str, password = line.split(": ")
@@ -25,7 +28,8 @@ def is_valid(password_and_policy):
     return char_count >= min and char_count <= max
 
 
-def part_1(lines):
+def part_1():
+    lines = read_input()
     valid_cnt = 0
     for line in lines:
         policy = parse_password_and_policy(line)
@@ -54,7 +58,8 @@ def is_valid_part2(password_and_policy):
         return False
 
 
-def part_2(lines):
+def part_2():
+    lines = read_input()
     valid_cnt = 0
     for line in lines:
         policy = parse_password_and_policy(line)
@@ -65,5 +70,5 @@ def part_2(lines):
     print("Day 2, part 2: " + str(valid_cnt))
 
 
-part_1(lines)
-part_2(lines)
+part_1()
+part_2()

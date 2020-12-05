@@ -1,8 +1,14 @@
-file = open("inputs/day01.txt", "r")
-lines = file.read().splitlines()
-file.close()
 
-def part_1(lines):
+
+def read_input():
+    file = open("inputs/day01.txt", "r")
+    lines = file.read().splitlines()
+    file.close()
+    return lines
+
+
+def part_1():
+    lines = read_input()
     for current_line_n in range(len(lines)):
         for next_line_n in range(current_line_n + 1, len(lines)):
             number1 = int(lines[current_line_n])
@@ -13,8 +19,8 @@ def part_1(lines):
             if summed == 2020:
                 print("Day 1, part 1: " + str(number1 * number2))
 
-
-def part_2(lines):
+def part_2():
+    lines = read_input()
     for first_line_n in range(len(lines)):
         number1 = int(lines[first_line_n])
         for second_line_n in range(first_line_n + 1, len(lines)):
@@ -29,5 +35,5 @@ def part_2(lines):
 
 
 
-part_1(lines)
-part_2(lines)
+part_1()
+part_2()
