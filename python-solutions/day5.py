@@ -60,6 +60,25 @@ def part1():
 
     print("Day 5, part 1: ", max(seat_ids))
 
+def part2():
+    boarding_passes = read_input()
+    seat_ids = []
+
+    for boarding_pass in boarding_passes:
+        seat_ids.append(calculate_seat_id(boarding_pass))
+
+
+    range_start = min(seat_ids)
+    range_end = max(seat_ids)
+
+    my_seat = 0
+
+    for seat_id in range(range_start, range_end):
+        if not seat_id in seat_ids:
+            my_seat = seat_id
+
+    print("Day 5, part 2: ", my_seat)
+
 
 
 #print(calculate_seat_id("FBFBBFFRLR"))
@@ -68,3 +87,4 @@ def part1():
 #print(calculate_seat_id("BBFFBBFRLL"))
 
 part1()
+part2()
