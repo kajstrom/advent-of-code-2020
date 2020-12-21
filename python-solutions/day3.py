@@ -1,5 +1,9 @@
+import operator
+from functools import reduce
+
+
 def read_input():
-    file = open("inputs/day03-example.txt", "r")
+    file = open("inputs/day03.txt", "r")
     lines = file.read().splitlines()
     file.close()
 
@@ -29,7 +33,6 @@ def count_trees(arr_lines, slope):
         if arr_lines[curr_row][curr_col] == '#':
             trees = trees + 1
 
-        #print(curr_row, curr_col, trees)
 
     return trees
 
@@ -41,5 +44,24 @@ def part1():
 
     print("Day 3, part 1: ", trees_encountered)
 
+def part2():
+    lines = lines_to_arrays(read_input())
+    slopes = [
+        {"down": 1, "right": 1},
+        {"down": 1, "right": 3},
+        {"down": 1, "right": 5},
+        {"down": 1, "right": 7},
+        {"down": 2, "right": 1},
+    ]
+
+    trees_encountered = []
+
+    for slope in slopes:
+        trees_encountered.append(count_trees(lines, slope))
+
+    print(trees_encountered)
+    print("Day 3, part 2: ", reduce(operator.mul, trees_encountered, 1))
+
 
 part1()
+part2()
