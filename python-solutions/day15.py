@@ -23,9 +23,41 @@ def part1():
 
         turn += 1
 
-    print(last_number_spoken)
+    print(f"Day 15, part 1: {last_number_spoken}")
 
+def part2():
+    numbers = {}
+
+    turn = 1
+    for number in starting_numbers[1:]:
+        numbers[number] = [turn]
+
+        turn += 1
+
+    last_number_spoken = number
+    turn = len(starting_numbers)
+    while turn <= 30000000:
+        seen_number = last_number_spoken in numbers
+
+        if seen_number and len(numbers[last_number_spoken]) >= 2:
+            last_turn_spoken = numbers[last_number_spoken][-1]
+            previous_turn_spoken = numbers[last_number_spoken][-2]
+
+            last_number_spoken = last_turn_spoken - previous_turn_spoken
+        else:
+            last_number_spoken = 0
+
+        if last_number_spoken in numbers:
+            numbers[last_number_spoken].append(turn)
+        else:
+            numbers[last_number_spoken] = [turn]
+
+        turn += 1
+
+
+    print(f"Day 15, part 2: {last_number_spoken}")
 
 
 if __name__ == '__main__':
     time_fn(part1)
+    time_fn(part2)
