@@ -1,9 +1,6 @@
 import sys
-import bisect
-from operator import itemgetter
 
 from utils import time_fn
-import numpy as np
 
 def read_input():
     file = open("inputs/day13.txt", "r")
@@ -48,23 +45,6 @@ def part1():
     result = diff * best_bus
 
     print(f"Day 13, part 1: {result}")
-
-
-
-def create_bus_ranges(buses):
-    first_bus_number = buses[0]["number"]
-
-    bus_ranges = []
-    bus_range = range(0, sys.maxsize, first_bus_number)
-    bus_ranges.append(bus_range)
-    for bus in buses[1:]:
-        number = bus["number"]
-        offset = bus["index"] % first_bus_number
-
-        bus_range = range(0, sys.maxsize, number)
-        bus_ranges.append(bus_range)
-
-    return bus_ranges
 
 def part2():
     buses = input["buses"]
